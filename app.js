@@ -12,7 +12,10 @@ app.use(cors({
   credentials: true
 }))
 app.use(session({
-  secret: 'asdlfkfso3234o23lsdflasdfasdfasdfoasdf'
+  secret: 'asdlfkfso3234o23lsdflasdfasdfasdfoasdf',
+  resave: false, // No volver a guardar la sesión si no se ha modificado
+  saveUninitialized: false, // No guardar una sesión no inicializada
+  cookie: { secure: true } // Asegúrate de que 'secure' sea verdadero en producción
 }))
 
 // Create the connection to database
