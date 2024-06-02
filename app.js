@@ -29,7 +29,12 @@ app.use(session({
   resave: false,
   proxy: true,
   unset: 'destroy',
-  cookie: { secure: true }, // Asegúrate de que 'secure' sea verdadero en producción
+  cookie: {
+    secure: true
+    ,
+    sameSite: 'none'
+
+  }, // Asegúrate de que 'secure' sea verdadero en producción
   store: sessionStore,
 }))
 app.set("trust proxy", 1);
