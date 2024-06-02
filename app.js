@@ -17,8 +17,9 @@ app.use(session({
 
 // Create the connection to database
 const connection = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
+  host: 'monorail.proxy.rlwy.net',
+  port: 16856,
+  user: 'xsQzKeIpFaVBjVeMAnkmtkZWfatooHrz',
   database: 'login',
 });
 
