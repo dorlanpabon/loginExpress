@@ -25,6 +25,10 @@ app.use(cors({
 }))
 app.use(session({
   secret: 'asdlfkfso3234o23lsdflasdfasdfasdfoasdf',
+  saveUninitialized: false,
+  resave: false,
+  proxy: true,
+  unset: 'destroy',
   cookie: { secure: true }, // Asegúrate de que 'secure' sea verdadero en producción
   store: sessionStore,
 }))
