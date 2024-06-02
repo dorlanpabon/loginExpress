@@ -8,7 +8,7 @@ const session = require('express-session')
 const md5 = require('md5');
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: '*',
   credentials: true
 }))
 app.use(session({
