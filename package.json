@@ -4,6 +4,10 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
+    "md5": "^2.3.0",
     "mysql2": "^3.9.7"
+  },
+  "scripts": {
+    "dev": "node --watch app.js"
   }
 }
