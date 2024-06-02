@@ -45,8 +45,9 @@ app.get('/login', async (req, res) => { //req = request, peticion; res = respons
       if (results[0].rol == 'ADMINISTRADOR') {
         req.session.administrador = true;
         res.status(200).json({ rol: 'ADMINISTRADOR' })
+      } else {
+        res.status(200).json({ rol: 'USUARIO' })
       }
-      res.status(200).json({ rol: 'USUARIO' })
     } else {
       res.status(401).send('Datos incorrectos')
     }
@@ -55,6 +56,7 @@ app.get('/login', async (req, res) => { //req = request, peticion; res = respons
     console.log(fields); // fields contains extra meta data about results, if available
   } catch (err) {
     console.log(err);
+    res.status(500).send('Error en la base de datos')
   }
 })
 app.get('/validar', (req, res) => {
@@ -88,6 +90,7 @@ app.get('/registrar', async (req, res) => {
     console.log(fields); // fields contains extra meta data about results, if available
   } catch (err) {
     console.log(err);
+    res.status(500).send('Error en la base de datos')
   }
 })
 
@@ -103,6 +106,7 @@ app.get('/usuarios', async function usuarios(req, res) { //request, response
     res.status(200).json(results)
   } catch (err) {
     console.log(err);
+    res.status(500).send('Error en la base de datos')
   }
 })
 
@@ -124,6 +128,7 @@ app.delete('/usuarios', async function usuarios(req, res) { //request, response
     }
   } catch (err) {
     console.log(err);
+    res.status(500).send('Error en la base de datos')
   }
 })
 
