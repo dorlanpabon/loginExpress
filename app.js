@@ -13,8 +13,6 @@ app.use(cors({
 }))
 app.use(session({
   secret: 'asdlfkfso3234o23lsdflasdfasdfasdfoasdf',
-  resave: false, // No volver a guardar la sesión si no se ha modificado
-  saveUninitialized: false, // No guardar una sesión no inicializada
   cookie: { secure: true } // Asegúrate de que 'secure' sea verdadero en producción
 }))
 
