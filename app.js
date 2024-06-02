@@ -32,6 +32,7 @@ app.use(session({
   cookie: { secure: true }, // Asegúrate de que 'secure' sea verdadero en producción
   store: sessionStore,
 }))
+app.set("trust proxy", 1);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
