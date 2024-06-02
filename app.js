@@ -8,7 +8,7 @@ const session = require('express-session')
 const md5 = require('md5');
 
 app.use(cors({
-  origin: '*',
+  origin: 'https://665bd0f7497f3ae5eaaaf8a6--funny-malabi-351d3c.netlify.app',
   credentials: true
 }))
 app.use(session({
