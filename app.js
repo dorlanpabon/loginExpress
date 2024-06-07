@@ -5,7 +5,6 @@ const port = process.env.PORT || 3000
 const mysql = require('mysql2/promise');
 const cors = require('cors')
 const session = require('express-session')
-const MySQLStore = require('express-mysql-session')(session);
 const md5 = require('md5');
 
 // Create the connection to database
@@ -17,25 +16,17 @@ const connection = mysql.createPool({
   database: 'login',
 });
 
-const sessionStore = new MySQLStore({}, connection);
-
 app.use(cors({
   origin: 'https://665bd0f7497f3ae5eaaaf8a6--funny-malabi-351d3c.netlify.app',
   credentials: true
 }))
 app.use(session({
   secret: 'asdlfkfso3234o23lsdflasdfasdfasdfoasdf',
-  saveUninitialized: false,
-  resave: false,
-  proxy: true,
-  unset: 'destroy',
   cookie: {
-    secure: true
-    ,
+    secure: true,
     sameSite: 'none'
 
   }, // Asegúrate de que 'secure' sea verdadero en producción
-  store: sessionStore,
 }))
 app.set("trust proxy", 1);
 
