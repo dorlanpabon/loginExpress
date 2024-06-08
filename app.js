@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 // Get the client
 const mysql = require('mysql2/promise');
 const cors = require('cors')
@@ -8,18 +8,19 @@ const session = require('express-session')
 const md5 = require('md5');
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: process.env.URLFRONTEND ||'http://localhost:5173',
   credentials: true
 }))
 app.use(session({
-  secret: 'asdlfkfso3234o23lsdflasdfasdfasdfoasdf'
+  secret: process.env.SECRETSESSION || 'asdlfkfso3234o23lsdflasdfasdfasdfoasdf'
 }))
 
 // Create the connection to database
 const connection = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  database: 'login',
+  host: process.env.HOSTDB || 'localhost',
+  user: process.env.USERDB || 'root',
+  database: process.env.DB || 'login',
+  password: process.env.PASSWORDDB || ''
 });
 
 app.get('/', (req, res) => {
