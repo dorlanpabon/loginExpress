@@ -58,6 +58,7 @@ app.get('/login', async (req, res) => { //req = request, peticion; res = respons
     console.log(fields); // fields contains extra meta data about results, if available
   } catch (err) {
     console.log(err);
+    res.status(500).send('Error al iniciar sesión')
   }
 })
 app.get('/validar', (req, res) => {
@@ -91,6 +92,7 @@ app.get('/registrar', async (req, res) => {
     console.log(fields); // fields contains extra meta data about results, if available
   } catch (err) {
     console.log(err);
+    res.status(500).send('Error al registrar Usuario')
   }
 })
 
@@ -106,6 +108,7 @@ app.get('/usuarios', async function usuarios(req, res) { //request, response
     res.status(200).json(results)
   } catch (err) {
     console.log(err);
+    res.status(500).send('Error al obtener usuarios')
   }
 })
 
@@ -127,6 +130,7 @@ app.delete('/usuarios', async function usuarios(req, res) { //request, response
     }
   } catch (err) {
     console.log(err);
+    res.status(500).send('Error al eliminar usuario')
   }
 })
 
