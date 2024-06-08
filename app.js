@@ -8,16 +8,20 @@ const session = require('express-session')
 const md5 = require('md5');
 
 app.use(cors({
-  origin: process.env.URLFRONTEND ||'http://localhost:5173',
+  origin: process.env.URLFRONTEND || 'http://localhost:5173',
   credentials: true
 }))
 app.use(session({
   secret: process.env.SECRETSESSION || 'asdlfkfso3234o23lsdflasdfasdfasdfoasdf',
-  cookie:{
+  resave: false,
+  saveUninitialized: true,
+  proxy: true,
+  cookie: {
     sameSite: 'none',
-    secure: true
+    secure: true,
   }
 }))
+app.set("trust proxy", 1);
 
 // Create the connection to database
 const connection = mysql.createPool({
