@@ -12,7 +12,11 @@ app.use(cors({
   credentials: true
 }))
 app.use(session({
-  secret: process.env.SECRETSESSION || 'asdlfkfso3234o23lsdflasdfasdfasdfoasdf'
+  secret: process.env.SECRETSESSION || 'asdlfkfso3234o23lsdflasdfasdfasdfoasdf',
+  cookie:{
+    sameSite: 'none',
+    secure: true
+  }
 }))
 
 // Create the connection to database
@@ -20,7 +24,8 @@ const connection = mysql.createPool({
   host: process.env.HOSTDB || 'localhost',
   user: process.env.USERDB || 'root',
   database: process.env.DB || 'login',
-  password: process.env.PASSWORDDB || ''
+  password: process.env.PASSWORDDB || '',
+  port: process.env.PORTDB || 3306
 });
 
 app.get('/', (req, res) => {
