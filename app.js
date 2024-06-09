@@ -13,8 +13,6 @@ app.use(cors({
 }))
 app.use(session({
   secret: process.env.SECRETSESSION || 'asdlfkfso3234o23lsdflasdfasdfasdfoasdf',
-  resave: false,
-  saveUninitialized: true,
   proxy: true,
   cookie: {
     sameSite: 'none',
