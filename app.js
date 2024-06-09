@@ -48,6 +48,7 @@ app.get('/login', async (req, res) => { //req = request, peticion; res = respons
       if (results[0].rol == 'ADMINISTRADOR') {
         req.session.administrador = true;
         res.status(200).json({ rol: 'ADMINISTRADOR' })
+        return
       }
       res.status(200).json({ rol: 'USUARIO' })
     } else {
