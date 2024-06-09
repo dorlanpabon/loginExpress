@@ -13,7 +13,7 @@ app.use(cors({
 }))
 app.use(session({
   secret: process.env.SECRETSESSION || 'asdlfkfso3234o23lsdflasdfasdfasdfoasdf',
-  // proxy: true,
+  proxy: true,
   cookie: {
     sameSite: 'none',
     secure: true,
